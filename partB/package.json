@@ -1,0 +1,24 @@
+{
+  "name": "personal-task-tracker",
+  "version": "1.0.0",
+  "description": "Personal Task Tracker - AI-Assisted Software Construction",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.3",
+    "supertest": "^7.0.0"
+  },
+  "author": "ynjka0202",
+  "license": "MIT"
+}
