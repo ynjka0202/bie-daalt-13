@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  title: Task Management API
+  description: Лаборатори 14-ийн хүрээнд хийгдсэн Task API-ийн баримт бичиг
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Local development server
+paths:
+  /tasks:
+    get:
+      summary: Бүх ажилбарыг шүүж авах
+      description: Status, priority, эсвэл label-ээр шүүх боломжтой
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [todo, in-progress, completed]
+        - name: label
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Амжилттай
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+    post:
+      summary: Шинэ ажилбар үүсгэх
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskInput'
+      responses:
+        '201':
+          description: Үүсгэгдсэн
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        _id:
+          type: string
+        title:
+          type: string
+        status:
+          type: string
+        priority:
+          type: string
+    TaskInput:
+      type: object
+      required:
+        - title
+      properties:
+        title:
+          type: string
+        description:
+          type: string
